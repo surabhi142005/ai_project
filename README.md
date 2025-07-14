@@ -216,3 +216,57 @@ if __name__ == "__main__":
         save_persona_to_file(username, user_persona)
     else:
         print(f"No content found for u/{username}. Cannot generate persona.")
+
+
+2. Create a Virtual Environment (Recommended)
+Bash
+
+python -m venv venv
+source venv/bin/activate # On Windows: .\venv\Scripts\activate
+3. Install Dependencies
+Bash
+
+pip install praw openai
+4. Configure API Keys
+This script requires API credentials for Reddit and OpenAI (or your chosen LLM provider).
+
+a. Reddit API Credentials
+Go to Reddit's App Preferences.
+
+Scroll down and click "Are you a developer? Create an app...".
+
+Choose "script" for the application type.
+
+Give it a name (e.g., "PersonaGenerator"), a description, and an about url (can be anything, e.g., http://localhost).
+
+Set the redirect uri to http://localhost:8080 (or any valid local URL).
+
+Click "create app".
+
+Once created, you'll see your client ID (under "personal use script") and client secret.
+
+Set these as environment variables:
+
+Bash
+
+export REDDIT_CLIENT_ID="YOUR_REDDIT_CLIENT_ID"
+export REDDIT_CLIENT_SECRET="YOUR_REDDIT_CLIENT_SECRET"
+export REDDIT_USER_AGENT="RedditPersonaGenerator/1.0 (by /u/YOUR_REDDIT_USERNAME)" # Replace with your Reddit username!
+Note: For Windows, use set instead of export (e.g., set REDDIT_CLIENT_ID="YOUR_REDDIT_CLIENT_ID").
+
+b. OpenAI API Key (or Google Gemini API Key)
+Go to the OpenAI API Key page.
+
+Create a new secret key.
+
+Set this as an environment variable:
+
+Bash
+
+export OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
+Note: For Windows, use set instead of export. If using Google Gemini, you'd set GOOGLE_API_KEY and adjust the openai client initialization to google.generativeai.
+
+5. Execute the Script
+Run the script from your terminal, providing the Reddit profile URL as an argument:
+python reddit_persona_generator.py [https://www.reddit.com/user/kojied/](https://www.reddit.com/user/kojied/)
+python reddit_persona_generator.py [https://www.reddit.com/user/Hungry-Move-6603/](https://www.reddit.com/user/Hungry-Move-6603/)
