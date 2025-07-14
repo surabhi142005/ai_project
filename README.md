@@ -25,6 +25,9 @@ This script scrapes a Reddit user's comments and posts to generate a detailed us
 ```bash
 git clone [https://github.com/yourusername/reddit-persona-generator.git](https://github.com/yourusername/reddit-persona-generator.git)
 cd reddit-persona-generator
+python -m venv venv
+source venv/bin/activate # On Windows: .\venv\Scripts\activate
+pip install praw openai
 
 
 # reddit_persona_generator.py
